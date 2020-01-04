@@ -25,19 +25,19 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                       child: ReusableCard(
                     colour: activeCardColor,
-                    customWidged: Container(
-                      child: Row(
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.mars),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text('MALE'),
-                        ],
-                      ),
+                    customWidged: SelectGender(
+                      icon: FontAwesomeIcons.mars,
+                      gender: 'MALE',
                     ),
                   )),
-                  Expanded(child: ReusableCard(colour: activeCardColor)),
+                  Expanded(
+                      child: ReusableCard(
+                    colour: activeCardColor,
+                    customWidged: SelectGender(
+                      icon: FontAwesomeIcons.venus,
+                      gender: 'FEMALE',
+                    ),
+                  )),
                 ],
               ),
             ),
@@ -61,6 +61,38 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class SelectGender extends StatelessWidget {
+  SelectGender({this.icon, this.gender});
+
+  final IconData icon;
+  final String gender;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            icon,
+            size: 80,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            gender,
+            style: TextStyle(
+              fontSize: 18,
+              color: Color(0xff8d8e98),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.colour, this.customWidged});
   final Color colour;
@@ -69,6 +101,7 @@ class ReusableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: customWidged,
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: colour,
