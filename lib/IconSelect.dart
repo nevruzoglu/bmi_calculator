@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-const labelTextStyle = TextStyle(
-  fontSize: 18,
-  color: Color(0xff8d8e98),
-);
+import 'constants.dart';
 
 class IconSelect extends StatelessWidget {
   IconSelect({this.icon, this.gender});
@@ -26,7 +22,7 @@ class IconSelect extends StatelessWidget {
           ),
           Text(
             gender,
-            style: labelTextStyle,
+            style: kLabelTextStyle,
           ),
         ],
       ),
