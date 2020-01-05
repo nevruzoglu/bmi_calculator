@@ -24,6 +24,7 @@ class _InputPageState extends State<InputPage> {
           title: Text('BMI CALCULATOR'),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               child: Row(
@@ -38,7 +39,7 @@ class _InputPageState extends State<InputPage> {
                     colour: selectGender == Gender.male
                         ? kActiveCardColor
                         : kInactiveCardColor,
-                    customWidged: IconSelect(
+                    cardChild: IconSelect(
                       icon: FontAwesomeIcons.mars,
                       gender: 'MALE',
                     ),
@@ -53,7 +54,7 @@ class _InputPageState extends State<InputPage> {
                     colour: selectGender == Gender.female
                         ? kActiveCardColor
                         : kInactiveCardColor,
-                    customWidged: IconSelect(
+                    cardChild: IconSelect(
                       icon: FontAwesomeIcons.venus,
                       gender: 'FEMALE',
                     ),
@@ -61,7 +62,25 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Expanded(child: ReusableCard(colour: kActiveCardColor)),
+            Expanded(
+              child: ReusableCard(
+                cardChild: Column(
+                  children: <Widget>[
+                    Text('HEIGHT'),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          '180',
+                          style: kNumberTextStyle,
+                        ),
+                        Text('cm'),
+                      ],
+                    ),
+                  ],
+                ),
+                colour: kActiveCardColor,
+              ),
+            ),
             Expanded(
               child: Row(
                 children: <Widget>[
