@@ -15,6 +15,7 @@ class InputPage extends StatefulWidget {
 }
 
 Gender selectGender;
+int height = 180;
 
 class _InputPageState extends State<InputPage> {
   @override
@@ -65,16 +66,40 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: ReusableCard(
                 cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text('HEIGHT'),
+                    Text(
+                      'HEIGHT',
+                      style: kLabelTextStyle,
+                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // cant crosaxis.baseline before defining text baseline property, or it gives error.
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
                       children: <Widget>[
                         Text(
-                          '180',
+                          height.toString(),
                           style: kNumberTextStyle,
                         ),
-                        Text('cm'),
+                        Text(
+                          'cm',
+                          style: kLabelTextStyle,
+                        ),
                       ],
+                    ),
+                    Slider(
+                      value: height.toDouble(),
+                      max: 200,
+                      min: 120,
+                      activeColor: Color(0xffeb1555),
+                      inactiveColor: Color(0xff8d8e98),
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
                     ),
                   ],
                 ),
