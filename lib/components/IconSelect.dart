@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class IconSelect extends StatelessWidget {
   IconSelect({this.icon, this.gender});
