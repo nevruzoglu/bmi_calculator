@@ -18,7 +18,7 @@ class IconSelect extends StatelessWidget {
             size: 80,
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           Text(
             gender,
